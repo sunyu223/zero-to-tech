@@ -1,2 +1,4 @@
 node_modules
 dist
+# SSH私钥
+id_ed25519
