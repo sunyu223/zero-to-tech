@@ -1,4 +1,0 @@
-Host github.com
-  HostName github.com
-  IdentityFile /d/desktop/zero2tech/zero-to-tech/ssh/id_ed25519
-  StrictHostKeyChecking no

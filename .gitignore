@@ -18,4 +18,4 @@ dist/
 *.log
 .env*
 
-backend/.env*
+backend/.env*ssh/
