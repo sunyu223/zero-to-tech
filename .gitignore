@@ -19,3 +19,4 @@ dist/
 .env*
 
 backend/.env*ssh/
+backend/*.db
