@@ -8,7 +8,9 @@ import { useState } from "react";
 const API = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function InputCard({ onResult }) {
-  const [text, setText] = useState("今天的风很轻，适合把脑海里的想法慢慢写下来。");
+  const [text, setText] = useState(
+    "今天的风很轻，适合把脑海里的想法慢慢写下来。",
+  );
   const [error, setError] = useState("");
 
   async function handleAnalyze() {
@@ -18,6 +20,7 @@ export default function InputCard({ onResult }) {
       const res = await fetch(`${API}/api/analyze`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // ← 新增：带上 cookie
         body: JSON.stringify({ text }),
       });
 
@@ -50,7 +53,11 @@ export default function InputCard({ onResult }) {
         {/* state 现身：text 一变，这行数字自动跟着变 */}
         <p className="lab-count">已输入 {text.length} 字</p>
         {error && <p className="lab-error">{error}</p>}
-        <button className="primary-button" type="button" onClick={handleAnalyze}>
+        <button
+          className="primary-button"
+          type="button"
+          onClick={handleAnalyze}
+        >
           开始分析
         </button>
       </form>
