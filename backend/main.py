@@ -6,14 +6,21 @@ from pypinyin import lazy_pinyin, Style
 from snownlp import SnowNLP
 from datetime import datetime, timezone
 from storage import get_history, save_record, init_db
+import os
+from dotenv import load_dotenv
 
+load_dotenv()                        # ← 读同目录下的 .env
+
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS").split(",")
+
+init_db() # 初始化数据库 如果不存在则创建
 
 app = FastAPI()
 
-init_db()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=ALLOWED_ORIGINS,   # ← 不再写死，从配置来
     allow_methods=["GET", "POST"],
     allow_credentials=True,          # ← 新增：允许跨源请求带上 cookie
 )

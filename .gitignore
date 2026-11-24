@@ -17,6 +17,6 @@ dist/
 .DS_Store
 *.log
 .env*
-
+!.env.example
 backend/.env*ssh/
 backend/*.db
